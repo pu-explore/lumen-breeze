@@ -1,0 +1,64 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests\ForgotPasswordRequest;
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\ResetPasswordRequest;
+use Illuminate\Contracts\Container\BindingResolutionException;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Validation\ValidationException;
+
+class AuthController extends Controller
+{
+    /**
+     * Handle an login request
+     *
+     * @param LoginRequest $request
+     * @return JsonResponse
+     * @throws BindingResolutionException
+     * @throws ValidationException
+     */
+    public function login(LoginRequest $request)
+    {
+        return response()->json()->header('Authorization', $request->authenticate());
+    }
+
+    /**
+     * Handle an incoming registration request.
+     *
+     * @param RegisterRequest $request
+     * @return JsonResponse
+     */
+    public function register(RegisterRequest $request)
+    {
+        return response()->json()->header('Authorization', $request->store());
+    }
+
+    /**
+     * Handle an incoming password reset link request.
+     *
+     * @param ForgotPasswordRequest $request
+     * @return JsonResponse
+     * @throws BindingResolutionException
+     * @throws ValidationException
+     */
+    public function forgotPassword(ForgotPasswordRequest $request)
+    {
+        return response()->json(['status' =>  __($request->sendMail())]);
+    }
+
+    /**
+     * Handle an incoming new password request.
+     *
+     * @param ResetPasswordRequest $request
+     * @return JsonResponse
+     * @throws BindingResolutionException
+     * @throws ValidationException
+     */
+    public function resetPassword(ResetPasswordRequest $request)
+    {
+        return response()->json(['status' =>  __($request->reset())]);
+    }
+}
