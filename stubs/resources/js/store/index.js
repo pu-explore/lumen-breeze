@@ -8,31 +8,31 @@ export default createStore({
         errors: Array,
     },
     mutations: {
-        // 清除auth
+        // Clear auth
         clearAuth (state) {
             state.authToken = null;
             state.authName = null;
             state.authEmail = null;
             localStorage.removeItem('auth-token');
         },
-        // 更新authToken
+        // Update authToken
         updateAuthToken (state, api_token) {
             localStorage.setItem('auth-token', api_token);
-            state.authToken = localStorage.getItem('auth-token');
+            state.authToken = api_token;
         },
-        // 更新authName
+        // Update authName
         updateAuthName (state, userName) {
             state.authName = userName;
         },
-        // 更新authEmail
+        // Update authEmail
         updateAuthEmail (state, userEmail) {
             state.authEmail = userEmail;
         },
-        // 清除errors
+        // Clear errors
         clearErrors (state) {
             state.errors = [];
         },
-        // 更新errors
+        // Update errors
         updateErrors (state, errors) {
             state.errors = errors;
         },

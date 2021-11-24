@@ -50,7 +50,7 @@ router.beforeEach((to, from, next) => {
         });
     }
     // If there is no token, jump to the login page (excluding Welcome and Login pages)
-    if (!['Welcome', 'Login', 'Register', 'ForgotPassword', 'ResetPassword'].includes(to.name) && !store.state.authToken) {
+    if (to.name === 'Dashboard' &&  !store.state.authToken) {
         next({
             path: '/login'
         });

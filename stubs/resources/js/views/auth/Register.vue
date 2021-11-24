@@ -71,6 +71,7 @@ export default {
     methods: {
         submit() {
             this.status = '';
+            this.$store.commit('clearErrors');
             axios.post('/register', this.form)
                 .then((response) => {
                     this.$store.commit('updateAuthToken', response.headers.authorization);

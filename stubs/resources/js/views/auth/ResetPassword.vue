@@ -60,6 +60,8 @@ export default {
 
     methods: {
         submit() {
+            this.status = '';
+            this.$store.commit('clearErrors');
             axios.post('/reset-password', this.form)
                 .then((response) => {
                     this.status = response.data.status;

@@ -50,6 +50,7 @@ export default {
     methods: {
         submit() {
             this.status = '';
+            this.$store.commit('clearErrors');
             axios.post('/forgot-password', this.form)
                 .then((response) => {
                     this.status = response.data.status;
@@ -57,6 +58,9 @@ export default {
                 .catch((error) => {
                     if (error.response.status === 422) {
                         this.$store.commit('updateErrors', error.response.data);
+                    }
+                    if (error.response.status === 500) {
+                        this.$store.commit('updateErrors', {email: 'Email service configuration error'});
                     }
                 });
         }
