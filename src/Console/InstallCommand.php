@@ -50,17 +50,7 @@ class InstallCommand extends Command
         // ServiceProvider
 //        $this->replaceInFile('/home', '/dashboard', resource_path('js/Pages/Welcome.vue'));
         copy(__DIR__.'/../../stubs/app/Providers/RequestServiceProvider.php.stub', base_path('app/Providers/RequestServiceProvider.php'));
-        $search = "if (\$request->input('api_token')) {
-                return User::where('api_token', \$request->input('api_token'))->first();
-            }";
-        $replace = "if (\$request->hasHeader('Authorization')) {
-                \$api_token = explode(' ', \$request->header('Authorization'))[1];
-
-                return \$api_token ? User::query()->where('api_token', \$api_token)->first() : null;
-            }
-
-            return null;";
-        $this->replaceInFile($search, $replace, base_path('app/Providers/AuthServiceProvider.php'));
+        copy(__DIR__.'/../../stubs/app/Providers/AuthServiceProvider.php.stub', base_path('app/Providers/AuthServiceProvider.php'));
 
         // Views...
         copy(__DIR__.'/../../stubs/resources/views/app.blade.php', resource_path('views/app.blade.php'));
