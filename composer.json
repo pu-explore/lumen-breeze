@@ -1,5 +1,5 @@
 {
-    "name": "laravel/lumen-breeze",
+    "name": "explore-pu/lumen-breeze",
     "description": "Minimal Lumen authentication scaffolding with vue and tailwindcss",
     "keywords": ["laravel", "auth"],
     "license": "MIT",

@@ -56,7 +56,7 @@ class InstallCommand extends Command
         copy(__DIR__.'/../../stubs/resources/views/app.blade.php', resource_path('views/app.blade.php'));
 
         // Public
-        copy(__DIR__.'/../../stubs/public/favicon.ico', base_path('public/favicon.ico'));
+        copy(__DIR__.'/../../stubs/resources/js/assets/favicon.ico', base_path('public/favicon.ico'));
 
         // Bootstrap
         copy(__DIR__.'/../../stubs/bootstrap/app.php', base_path('bootstrap/app.php'));

@@ -15,7 +15,7 @@
 ## Installation Package
 
 ```shell
-composer require laravel/lumen-breeze --dev
+composer require explore-pu/lumen-breeze --dev
 ```
 
 ## In `bootstrap/app.php` Add Service
